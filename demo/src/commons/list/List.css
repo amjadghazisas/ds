@@ -1,0 +1,38 @@
+.opty-list-container{
+
+    border: 1px solid;
+    max-width: 20%;
+    margin:5px;
+    overflow-y: auto;
+}
+
+.opty-list{
+
+    list-style: none;
+    margin: 2px;
+    padding:0px;
+}
+
+.opty-list li{
+
+    border: solid 1px;
+    max-width: 100%;
+    margin: 5px;
+    padding-left: 3px;
+}
+
+.opty-list li:hover{
+
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.highlighted{
+
+    background-color: lightblue;
+}
+
+.normal{
+
+    background-color: white;
+}
