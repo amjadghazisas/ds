@@ -1,9 +1,11 @@
 .opty-list-container{
 
     border: 1px solid;
-    max-width: 20%;
     margin:5px;
     overflow-y: auto;
+    display: inline-block;
+    max-width: 40%;
+    min-width: 40%;
 }
 
 .opty-list{
@@ -16,7 +18,6 @@
 .opty-list li{
 
     border: solid 1px;
-    max-width: 100%;
     margin: 5px;
     padding-left: 3px;
 }
