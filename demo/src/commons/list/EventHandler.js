@@ -34,6 +34,7 @@ export const keyUpHandler = (event)=>{
 
 export const clickHandler = (fn) => {
 
+    console.log('called');
     fn();
     
 };

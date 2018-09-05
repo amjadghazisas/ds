@@ -60,11 +60,11 @@ class List extends Component {
         return (<div className="opty-list-container">{items}</div>);
     }
 
-    _changeSelection(selected){
+    _changeSelection(selected,startPos=0,endPos=this.getLength()){
 
         const items = [...this.state.items];
 
-        for(let i=0;i<items.length;i++){
+        for(let i=startPos;i<endPos;i++){
 
             items[i].selected = selected;
         }
@@ -75,6 +75,10 @@ class List extends Component {
 
   ///////////////////////////////////// API //////////////////////////////////////////////
 
+   getLength(){
+
+     return this.state.items.length;
+   }
    getSelectedItems(){
 
         let selectedItemArray = [];
@@ -95,6 +99,12 @@ class List extends Component {
         return  this._lastSelectedItem;
    }
 
+   getLastSelectedIndex(){
+
+    return  this._lastSelectedIndex;
+
+   }
+
    clearSelection(){
 
         this._changeSelection(false);
@@ -109,16 +119,40 @@ class List extends Component {
 
         const items = [...this.state.items]; // since we do not want to mutate the original array managed by react
         // const items = this.state.items.slice(); //alternate way to prevent mutatation
+        let startPos;
+        let endPos
 
         for(let i=0;i<items.length;i++){
 
-            if(!isCtrlKey && (i!==itemIndex))
-            items[i].selected = false;
+            if(!isShiftKey && !isCtrlKey && (i!==itemIndex)){
+                
+                items[i].selected = false;
+            }            
         }
 
         items[itemIndex].selected = !items[itemIndex].selected;
+        
+
+        if(isShiftKey){
+
+            if(this._lastSelectedIndex < itemIndex){
+
+                startPos = this.getLastSelectedIndex();
+                endPos = itemIndex;
+
+            }else{
+
+                startPos = itemIndex;
+                endPos = this.getLastSelectedIndex();
+            }
+
+            this._changeSelection(true,startPos,endPos);
+        }
+
+        
 
         this._lastSelectedItem = items[itemIndex];
+        this._lastSelectedIndex = itemIndex;
 
         this.setState({items:items});
    }
