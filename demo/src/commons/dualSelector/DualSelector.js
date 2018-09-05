@@ -9,8 +9,7 @@ class DualSelector extends Component {
     return (
       <div className="opty-dualSelector">
         <List listHeight="300px"></List>
-        <List listHeight="300px"></List>
-      </div>
+     </div>
     );
   }
 }

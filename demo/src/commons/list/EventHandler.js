@@ -1,17 +1,26 @@
 export let isCtrlKey = false;
 export let isShiftKey = false;
+export let isSelectAll = false;
 
-const keyDownHandler = (event) => {
+const keyDownHandler = (event,handler) => {
 
-    if(event["ctrlKey"]){
+    if(event["ctrlKey"] && (event["keyCode"] !== 65)){
 
         isCtrlKey = true;
-        console.log("true...");
+
+    }else if(event["ctrlKey"] && (event["keyCode"] === 65)){
+
+        isSelectAll = true;
+        if(handler){
+
+            handler();
+        }
 
     }else if(event["shiftKey"]){
 
         isShiftKey = true;
     }
+
 
 }
 
@@ -19,6 +28,7 @@ export const keyUpHandler = (event)=>{
 
     isCtrlKey = false;
     isShiftKey = false;
+    isSelectAll = false;
 
 }
 
