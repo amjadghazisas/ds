@@ -135,7 +135,7 @@ class List extends Component {
 
         if(isShiftKey){
 
-            if(this._lastSelectedIndex < itemIndex){
+            if(this.getLastSelectedIndex() < itemIndex){
 
                 startPos = this.getLastSelectedIndex();
                 endPos = itemIndex;
